@@ -2,8 +2,6 @@ pipeline {
     agent any
     environment {
         registry = "150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine"
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
 
     stages {
