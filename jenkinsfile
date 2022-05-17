@@ -15,7 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh  ' docker build -t 150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine '
+          sh  ' docker build -t 150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine .'
         }
       }
     }
