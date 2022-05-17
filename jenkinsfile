@@ -4,14 +4,7 @@ pipeline {
     agent any
     environment {
         registry = "150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine"
-        script {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        AWS("--region=us-east-1 s3 ls")
-        }
     }
-    }
-    
-
 
     stages {
         stage('Cloning Git') {
