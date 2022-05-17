@@ -1,7 +1,13 @@
+@Library('github.com/releaseworks/jenkinslib') _
+
 pipeline {
     agent any
     environment {
         registry = "150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine"
+    }
+    
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+        AWS("--region=us-east-1 s3 ls")
     }
 
     stages {
