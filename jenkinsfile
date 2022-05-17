@@ -29,7 +29,7 @@ pipeline {
    
          script {
                 sh ' docker push 150172465894.dkr.ecr.us-east-1.amazonaws.com/node'
-                sh ' docker login -u AWS -p $(AWS(ecr get-login-password --region us-east-1)) 150172465894.dkr.ecr.us-east-1.amazonaws.com/node'
+                sh ' docker login -u AWS -p $(AWS(ecr get-login-password --region us-east-1)) 150172465894.dkr.ecr.us-east-1.amazonaws.com/nodeimage:latest'
              }
             }
           }
@@ -39,7 +39,7 @@ pipeline {
      steps{
          script {
                 sh ' ssh -i /home/ubuntu/finalProject.pem ubuntu@10.0.2.11'
-                sh ' docker run -d -p 8080:8080 --rm --name node 150172465894.dkr.ecr.us-east-1.amazonaws.com/node:alpine'
+                sh ' docker run -d -p 8080:8080 --rm --name node 150172465894.dkr.ecr.us-east-1.amazonaws.com/nodeimage:latest'
             }
       }
     }
